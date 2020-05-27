@@ -28,16 +28,24 @@
     "Plug 'tpope/vim-obsession'
     "Plug 'wting/gitsessions.vim'
     "Plug 'dhruvasagar/vim-table-mode'
-    "Plug 'flipcoder/vim-textbeat'
-    "Plug 'rhysd/vim-notes-cli'
-    Plug 'Shougo/neomru.vim' " note: may cause hangups with stuck nfs
-    Plug 'Shougo/neoyank.vim'
-    Plug 'Shougo/unite.vim'
-    Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+    "Plug 'blindFS/vim-taskwarrior'
+    "Plug 'ludovicchabant/vim-gutentags' "ctags updater
+    "Plug 'rking/ag.vim' " fzf has its own ag
+    "Plug 'Shougo/neomru.vim' " note: may cause hangups with stuck nfs
+    "Plug 'ujihisa/unite-colorscheme'
+    "Plug 'Shougo/neoyank.vim'
+    "Plug 'Shougo/unite.vim'
+    "Plug 'msprev/unite-bibtex', {'for': ['tex', 'latex']} " see also citation.vim and fzf-bibtex
+    "Plug 'Shougo/unite-outline'
+    "Plug 'tsukkee/unite-tag'
+    "Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+    "Plug 'vim-scripts/Jinja'
+    "Plug 'ambv/black'
+    "Plug 'kana/vim-altr'
+    Plug 'msprev/fzf-bibtex'
     Plug 'SirVer/ultisnips' " ~100ms startup
     Plug 'Vimjas/vim-python-pep8-indent'
     Plug 'avakhov/vim-yaml', { 'for': 'yaml' }
-    "Plug 'blindFS/vim-taskwarrior'
     Plug 'bronson/vim-trailing-whitespace'
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'editorconfig/editorconfig-vim'
@@ -50,14 +58,8 @@
     Plug 'junegunn/vim-easy-align'
     Plug 'lervag/vimtex', {'for': ['tex', 'latex']}
     Plug 'majutsushi/tagbar' " like taglist but more automatic
-    Plug 'moll/vim-bbye' " close buffers
-    Plug 'msprev/unite-bibtex', {'for': ['tex', 'latex']} " see also citation.vim
-    Plug 'Shougo/unite-outline'
-    Plug 'tsukkee/unite-tag'
+    Plug 'moll/vim-bbye' " close buffers use Bdelete
     Plug 'nvie/vim-flake8', {'for' : 'python'}
-    "Plug 'ludovicchabant/vim-gutentags' "ctags updater
-    " note fzf has its ag. (and unite can be configured for it too).
-    "Plug 'rking/ag.vim'
     Plug 'romainl/vim-qf' " quickfix stuff
     Plug 'scrooloose/nerdcommenter'
     Plug 'scrooloose/nerdtree'
@@ -67,24 +69,26 @@
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-sensible' " base config
-    Plug 'ujihisa/unite-colorscheme'
     Plug 'vim-scripts/Align' " use 'ga' to align
     "Plug 'vim-scripts/Jinja'
-    Plug 'Glench/Vim-Jinja2-Syntax'
+    "Plug 'Glench/Vim-Jinja2-Syntax'
     Plug 'wakatime/vim-wakatime'
     Plug 'xolox/vim-misc'
     Plug 'xolox/vim-notes'
     Plug 'vim-scripts/a.vim'
     Plug 'fncll/wordnet.vim'
     Plug 'rhysd/vim-clang-format'
+    Plug 'aklt/plantuml-syntax'
     Plug 'chr4/nginx.vim'
-    "Plug 'ambv/black'
-    "Plug 'kana/vim-altr'
-    Plug 'zxqfl/tabnine-vim'
+    Plug 'lepture/vim-jinja'
     Plug 'kana/vim-operator-user'
+    Plug 'zxqfl/tabnine-vim'
+    " for vim-lsp
+    Plug 'prabirshrestha/async.vim'
+    Plug 'prabirshrestha/vim-lsp'
+    Plug 'ryanolsonx/vim-lsp-python'
+    Plug 'liuchengxu/vista.vim'
     Plug 'keith/swift.vim'
-    Plug 'lervag/wiki.vim'
-    Plug 'lervag/wiki-ft.vim'
     "" colorschemes
     Plug 'altercation/vim-colors-solarized'
     Plug 'ajh17/Spacegray.vim'
@@ -133,6 +137,7 @@
     set wildignore+=*.log,*.aux,*.dvi,*.aut,*.bbl,*.blg,*.out,*.toc,*.ttt,*.snm
     set wildignore+=*.fdb_latexmk,*.fls,*.lof,*.lot,*.brf,*.pdf
     set wildignore+=*.ipynb
+    set wildignore+=*.png,*.jpg,*.JPG,*.jpeg,*.JPEG
     set wildignore+=*.pth,*.ts,*.onnx,*.mlmodel,*.pb
     set wildmenu
     set wildmode=full
@@ -347,6 +352,7 @@
         " set pwd to cwd of current file
         " a keybinding for alternate plugin
         nnoremap <leader>ba :A<CR>
+
         " screen shell thingy
         " these mappings inspired on r-plugin
         "nnoremap <leader>ae :ScreenSend<cr>
@@ -362,20 +368,35 @@
         map D02 <Plug>AM_w=
 
         " unite
-        nnoremap <silent> <F2> :<C-u>Unite -no-split -buffer-name=mru -start-insert file_mru<CR>
-        nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank -start-insert history/yank<CR>
-        nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<CR>
+        " nnoremap <silent> <F2> :<C-u>Unite -no-split -buffer-name=mru -start-insert file_mru<CR>
+        " nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank -start-insert history/yank<CR>
+        " nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<CR>
 
         " fzf.vim
+        nnoremap <silent> <F2> :<C-u>History<CR>
         nnoremap <leader>s :<C-u>Snippets<CR>
         nnoremap <leader>f :<C-u>Files<CR>
         nnoremap <leader>g :<C-u>Ag<CR>
         nnoremap <leader>l :<C-u>Lines<CR>
         nnoremap <leader>t :<C-u>Tags<CR>
         nnoremap <leader>bt :<C-u>BTags<CR>
-        nnoremap <F3> :<C-u>Buffers<CR>
+        " nnoremap <F3> :<C-u>Buffers<CR>
+        nnoremap <leader>b :<C-u>Buffers<CR>
+
+        " commands that either go to unite or fzf (or who knows? LeaderF?
+        " ctrlP?)
+        command FuzzYank Unite -no-split -buffer-name=yank -start-insert history/yank
+        command FuzzOutline -no-split -buffer-name=outline -start-insert outline
+        command FuzzSnippets Snippets
+        command FuzzFiles Files
+        command FuzzAg Ag
+        command FuzzBTags BTags
+        command FuzzBuffers Buffers
+        command FuzzMru History
 
         nnoremap <silent> <leader>a :A<CR>
+
+        command Black !black %
 
         " TODO also consider -quick-match option
         " apparently option '-' makes it so only file buffers are shown
@@ -400,13 +421,13 @@
     " cnoreabbrev vwg VimwikiGoto
 " }}}
 
-" TODO put these somewhere else
-" call altr#remove_all()
-" call altr#define('src/%.cpp', 'include/*/%.h')
-" " call altr#define('src/%.cpp', 'include/*/%.hpp')
-" " call altr#define('%.py', 'tests/test_%.py')
-" command! A call altr#forward()
-" "nnoremap <silent> <leader>a <Plug>(altr-forward)
-" nnoremap <silent> <leader>a :call altr#forward()<CR>
+let g:fzf_layout = {'window': {'width': 0.9, 'height': 0.6, 'border': 'rounded'} }
 
-command Black !black %
+" lsp
+"au User lsp_setup call lsp#register_server({
+"            \ 'name': 'pyls',
+"            \ 'cmd': {server_info->['/home/dmaturan/miniconda2/envs/pyls/bin/pyls']},
+"            \ 'whitelist': ['python'],
+"            \ })
+"
+" let g:lsp_diagnostics_enabled = 0
