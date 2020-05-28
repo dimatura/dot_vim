@@ -166,7 +166,6 @@
     " blank,buffers,curdir,folds,globals,help,localoptions,options,resize,sesdir,slash,tabpages,unix,winpos,winsize
     "set sessionoptions-=buffers
     set sessionoptions=buffers
-
 " }}}
 
 " tab settings {{{
@@ -416,6 +415,7 @@
     cnoreabbrev Wq wq
     cnoreabbrev W w
     " cnoreabbrev Make make " turns out dispatch.vim uses Make
+    cnoreabbrev Make make
     " cnoreabbrev vwg VimwikiGoto
 " }}}
 
