@@ -166,6 +166,7 @@
     " blank,buffers,curdir,folds,globals,help,localoptions,options,resize,sesdir,slash,tabpages,unix,winpos,winsize
     "set sessionoptions-=buffers
     set sessionoptions=buffers
+    set diffopt=internal,algorithm:patience,indent-heuristic,filler,closeoff
 " }}}
 
 " tab settings {{{
