@@ -78,11 +78,11 @@
     Plug 'vim-scripts/a.vim'
     Plug 'fncll/wordnet.vim'
     Plug 'rhysd/vim-clang-format'
+    Plug 'zxqfl/tabnine-vim'
     Plug 'aklt/plantuml-syntax'
     Plug 'chr4/nginx.vim'
     Plug 'lepture/vim-jinja'
     Plug 'kana/vim-operator-user'
-    Plug 'zxqfl/tabnine-vim'
     " for vim-lsp
     Plug 'prabirshrestha/async.vim'
     Plug 'prabirshrestha/vim-lsp'
