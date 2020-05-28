@@ -385,8 +385,6 @@
 
         " commands that either go to unite or fzf (or who knows? LeaderF?
         " ctrlP?)
-        command FuzzYank Unite -no-split -buffer-name=yank -start-insert history/yank
-        command FuzzOutline -no-split -buffer-name=outline -start-insert outline
         command FuzzSnippets Snippets
         command FuzzFiles Files
         command FuzzAg Ag
