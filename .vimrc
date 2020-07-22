@@ -83,12 +83,16 @@
     Plug 'chr4/nginx.vim'
     Plug 'lepture/vim-jinja'
     Plug 'kana/vim-operator-user'
+    " Plug 'lervag/wiki.vim'
+    Plug 'vimwiki/vimwiki'
     " for vim-lsp
     Plug 'prabirshrestha/async.vim'
     Plug 'prabirshrestha/vim-lsp'
     Plug 'ryanolsonx/vim-lsp-python'
     Plug 'liuchengxu/vista.vim'
     Plug 'keith/swift.vim'
+    " Plug 'alok/notational-fzf-vim'
+    Plug 'fmoralesc/vim-pad'
     "" colorschemes
     Plug 'altercation/vim-colors-solarized'
     Plug 'ajh17/Spacegray.vim'
@@ -430,3 +434,7 @@ let g:fzf_layout = {'window': {'width': 0.9, 'height': 0.6, 'border': 'rounded'}
 "            \ })
 "
 " let g:lsp_diagnostics_enabled = 0
+
+let g:wiki_root = '~/Dropbox/wikivim'
+let g:nv_search_paths = ['~/Dropbox/vim_notes']
+let g:pad#dir = '~/tmp/vim_pad'
